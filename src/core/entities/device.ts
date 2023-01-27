@@ -1,4 +1,4 @@
-export default interface Lathe{
+export default interface Device {
     id:string;
     password:string;
     token:string;
