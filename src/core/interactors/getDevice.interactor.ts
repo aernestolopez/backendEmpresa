@@ -1,7 +1,7 @@
 import Device from "../entities/device";
 import DeviceRepository from "../repositories/deviceRepository";
 
-const getDevice = (deviceRepository: DeviceRepository)=> (deviceId: string):Device => {
+const getDevice = (deviceRepository: DeviceRepository)=> (deviceId: string):Promise<Device> => {
     return deviceRepository.getDevice(deviceId)
 }
 export default getDevice;
