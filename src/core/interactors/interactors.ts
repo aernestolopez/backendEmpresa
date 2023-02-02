@@ -7,10 +7,10 @@ import deleteDeviceInteractor from "./deleteDevice.interactor";
 import updateDeviceInteractor from "./updateDevice.interactor";
 import getDeviceInteractor from "./getDevice.interactor";
 const deviceRepository=new DeviceSql();
-export const addDevice=addDeviceInteractor(deviceRepository)
-export const changeImgC=changeImgCorrectInteractor(deviceRepository)
-export const changeImgI=changeImgIncorrectInteractor(deviceRepository)
-export const changeImgW=changeImgWaitInteractor(deviceRepository)
-export const deleteDevice=deleteDeviceInteractor(deviceRepository)
-export const updateDevice=updateDeviceInteractor(deviceRepository)
-export const getDevice=getDeviceInteractor(deviceRepository)
+export const addDevice=addDeviceInteractor(deviceRepository);
+export const changeImgC=changeImgCorrectInteractor(deviceRepository);
+export const changeImgI=changeImgIncorrectInteractor(deviceRepository);
+export const changeImgW=changeImgWaitInteractor(deviceRepository);
+export const deleteDevice=deleteDeviceInteractor(deviceRepository);
+export const updateDevice=updateDeviceInteractor(deviceRepository);
+export const getDevice=getDeviceInteractor(deviceRepository);
