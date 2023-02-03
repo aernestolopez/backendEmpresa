@@ -1,3 +1,7 @@
+/**
+ * Declaracion de las rutas para el servidor de la api rest con express
+ * @author  ernesto
+ */
 import express from 'express';
 
 //hay que añadir la res la req y la funcionalidad

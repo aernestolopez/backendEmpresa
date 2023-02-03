@@ -1,3 +1,7 @@
+/**
+ * Creacion de la conexion a la base de datos y desarrollo de los metodos
+ * @author ernesto
+ */
 import DeviceRepository from "../core/repositories/deviceRepository";
 import Device from "../core/entities/device";
 import mysql=require('mysql')
@@ -8,71 +12,112 @@ let connection = mysql.createConnection({
     password : 'usuario',
     database : 'devices'
 });
+/**
+ * Hacer Promise de boolean
+ */
 
 connection.connect();
 
 export default class DeviceSql implements DeviceRepository{
 
-    addDevice(id: string, password: string): boolean {
-        connection.query(`INSERT INTO device (id, psswd) VALUES ('${id}', '${password}')`, function (error, results, fields) {
-            if (error) {
-                throw error;
-                return false;
-            }
+    addDevice(id: string, nombre: string, tipo:string, imgAbierto:Blob, imgCerrado:Blob, imgEspera:Blob): Promise<boolean> {
+        return new Promise<boolean>((resolve, reject)=>{
+            connection.query(`INSERT INTO device (id, nombre, tipo, imgAbierto, imgCerrado, imgEnEspera) VALUES ('${id}', '${nombre}', 
+            '${tipo}', '${imgAbierto}', '${imgCerrado}', '${imgEspera}'),`, function (error, results){
+                if(error){
+                    reject(false);
+                    console.log(error)
+                }else{
+                    resolve(true)
+                }
+            });
         });
-        return true;
     }
 
-    changeImgCorrect(id: string, img: Blob): boolean {
-        return false;
+    changeImgCorrect(id: string, img: Blob): Promise<boolean> {
+        return new Promise<boolean>((resolve, reject)=>{
+            connection.query(`UPDATE device SET imgAbierto='${img}' WHERE id='${id}'`, function (error, results){
+                if (error){
+                    reject(false)
+                    console.log(error)
+                }else{
+                    resolve(true)
+                }
+            })
+        })
     }
 
-    changeImgIncorrect(id: string, img: Blob): boolean {
-        return false;
+    changeImgIncorrect(id: string, img: Blob): Promise<boolean> {
+        return new Promise<boolean>((resolve, reject)=>{
+            connection.query(`UPDATE device SET imgAbierto='${img}' WHERE id='${id}'`, function (error, results){
+                if (error){
+                    reject(false)
+                    console.log(error)
+                }else{
+                    resolve(true)
+                }
+            })
+        })
     }
 
-    changeImgWait(id: string, img: Blob): boolean {
-        return false;
+    changeImgWait(id: string, img: Blob): Promise<boolean> {
+        return new Promise<boolean>((resolve, reject)=>{
+            connection.query(`UPDATE device SET imgAbierto='${img}' WHERE id='${id}'`, function (error, results){
+                if (error){
+                    reject(false)
+                    console.log(error)
+                }else{
+                    resolve(true)
+                }
+            })
+        })
     }
 
-    deleteDevice(id: string): boolean {
-        connection.query(`DELETE FROM device WHERE id='${id}'`, function (error, results, fields) {
-            if (error){
-                throw error;
-                return false;
-            }
-        });
-        return true;
+    deleteDevice(id: string): Promise<boolean> {
+        return new Promise<boolean>((resolve, reject)=>{
+            connection.query(`DELETE FROM device WHERE id='${id}'`, function (error,results){
+                if (error){
+                    reject(false)
+                    console.log(error)
+                }else{
+                    resolve(true)
+                }
+            })
+        })
     }
 
      getDevice(id: string): Promise<Device> {
         return new Promise<Device>((resolve,reject)=>{
             connection.query(`SELECT * FROM device WHERE id='${id}'`, function (error, results) {
                 if (error){
-                    reject(error);
+                    reject(false);
+                    console.log(error)
                 }
                 resolve({
                     id:results[0].id,
-                    password:results[0].psswd,
-                    token:results[0].token,
+                    nombre:results[0].nombre,
+                    tipo:results[0].tipo,
+                    uid:results[0].uid,
                     imgAbierto:results[0].imgAbierto,
                     imgCerrado:results[0].imgCerrado,
-                    imgEspera:results[0].imgenEnEspera
+                    imgEspera:results[0].imgEnEspera
                 });
             });
         });
     }
 
-    updateDevice(id: string, passwordAnt: string, passwordNew: string): boolean {
-        connection.query(`UPDATE device SET psswd='${passwordNew}' WHERE id='${id}' AND psswd='${passwordAnt}'`, function (error, results, fields) {
-            if (error){
-                throw error;
-            }
+    updateDevice(id: string, uidNew:string): Promise<boolean> {
+        return new Promise<boolean>((resolve, reject)=>{
+            connection.query(`UPDATE device SET uid='${uidNew}' WHERE id='${id}'`, function(error,results){
+                if (error){
+                    reject(false)
+                    console.log(error)
+                }else{
+                    resolve(true)
+                }
+            });
         });
-        return true;
     }
-
-
 
 }
 

@@ -1,3 +1,7 @@
+/**
+ * Archivo para la exportacion de los interactors
+ * @author ernesto
+ */
 import addDeviceInteractor from "./addDevice.interactor";
 import DeviceSql from "../../dataSources/mySql.datasource";
 import changeImgCorrectInteractor from "./changeImgCorrect.interactor";

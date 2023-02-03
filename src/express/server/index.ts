@@ -1,3 +1,7 @@
+/**
+ * Creacion de la api rest
+ * @author ernesto
+ */
 import express from 'express';
 import routeD from "../routes/route"
 const app=express()
