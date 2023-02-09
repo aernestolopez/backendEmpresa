@@ -12,21 +12,17 @@ let connection = mysql.createConnection({
     password : 'usuario',
     database : 'devices'
 });
-/**
- * Hacer Promise de boolean
- */
+
 
 connection.connect();
 
 export default class DeviceSql implements DeviceRepository{
 
-    addDevice(id: string, nombre: string, tipo:string, imgAbierto:Blob, imgCerrado:Blob, imgEspera:Blob): Promise<boolean> {
+    addDevice(id: string, nombre: string, tipo:string, uid:string, imgAbierto:Blob, imgCerrado:Blob, imgEspera:Blob): Promise<boolean> {
         return new Promise<boolean>((resolve, reject)=>{
-            connection.query(`INSERT INTO device (id, nombre, tipo, imgAbierto, imgCerrado, imgEnEspera) VALUES ('${id}', '${nombre}', 
-            '${tipo}', '${imgAbierto}', '${imgCerrado}', '${imgEspera}'),`, function (error, results){
-                if(error){
-                    reject(false);
-                    console.log(error)
+            connection.query('INSERT INTO device VALUES (?,?,?,?,?,?,?);',[id, nombre, tipo, uid, imgAbierto, imgCerrado, imgEspera], function (error){
+                if(error!=undefined){
+                    reject();
                 }else{
                     resolve(true)
                 }
