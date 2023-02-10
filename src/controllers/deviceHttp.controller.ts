@@ -9,9 +9,11 @@ export const addDeviceHttp=(request: Request, response: Response)=>{
 }
 
 export const getDeviceHttp=(request:Request, response:Response)=>{
-    const { body }=request;
-    const { device }=body;
-    const result=getDevice(device.id);
+    const id=request.params['id'];
+    //const { body }=request;
+    //const { device }=body;
+    const result=getDevice(id);
+
     result.then((resp)=>response.json(resp)).catch(()=>response.status(500).send());
 }
 

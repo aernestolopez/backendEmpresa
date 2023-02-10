@@ -10,9 +10,10 @@ const addDeviceHttp = (request, response) => {
 };
 exports.addDeviceHttp = addDeviceHttp;
 const getDeviceHttp = (request, response) => {
-    const { body } = request;
-    const { device } = body;
-    const result = (0, interactors_1.getDevice)(device.id);
+    const id = request.params['id'];
+    //const { body }=request;
+    //const { device }=body;
+    const result = (0, interactors_1.getDevice)(id);
     result.then((resp) => response.json(resp)).catch(() => response.status(500).send());
 };
 exports.getDeviceHttp = getDeviceHttp;

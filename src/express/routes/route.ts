@@ -13,7 +13,7 @@ import {
 //hay que añadir la res la req y la funcionalidad
 const route=express.Router();
 
-route.get('/getDevice', getDeviceHttp);
+route.get('/getDevice/:id', getDeviceHttp);
 route.post('/addDevice',addDeviceHttp);
 route.delete('/delDevice', deleteDeviceHttp);
 route.put('/updateDevice', updateDeviceHttp);
