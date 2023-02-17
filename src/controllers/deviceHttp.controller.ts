@@ -39,13 +39,13 @@ export const changeImgCorrectHtttp=(request: Request, response:Response)=>{
 export const changeImgIncorrectHttp=(request: Request, response: Response)=>{
     const { body }=request;
     const { device }=body;
-    const result=changeImgI(device.id, device.imgCerrado);
+    const result=changeImgI(device.id, device.data);
     result.then(()=>response.status(200).send()).catch(()=>response.status(500).send());
 }
 
 export const changeImgWaitHttp=(request:Request, response:Response)=>{
     const { body }=request;
     const { device }=body;
-    const result=changeImgW(device.id, device.imgEspera);
+    const result=changeImgW(device.id, device.data);
     result.then(()=>response.status(200).send()).catch(()=>response.status(500).send())
 }

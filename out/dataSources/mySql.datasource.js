@@ -48,7 +48,7 @@ class DeviceSql {
     }
     changeImgIncorrect(id, img) {
         return new Promise((resolve, reject) => {
-            connection.query("UPDATE device SET imgCerrado=? WHERE id=?", [img, id], function (error) {
+            connection.query("UPDATE device SET imgCerrado=" + img + " WHERE id='" + id + "';", function (error) {
                 console.log(img);
                 if (error) {
                     reject(false);
@@ -62,7 +62,7 @@ class DeviceSql {
     }
     changeImgWait(id, img) {
         return new Promise((resolve, reject) => {
-            connection.query(`UPDATE device SET imgAbierto='${img}' WHERE id='${id}'`, function (error, results) {
+            connection.query("UPDATE device SET imgEnEspera=" + img + " WHERE id='" + id + "';", function (error) {
                 if (error) {
                     reject(false);
                     console.log(error);
