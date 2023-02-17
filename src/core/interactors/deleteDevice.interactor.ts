@@ -4,7 +4,7 @@
  */
 import DeviceRepository from "../repositories/deviceRepository";
 
-const deleteDeviceInteractor = (deviceRepository: DeviceRepository)=> (deviceId: string):Promise<boolean> => {
+const deleteDeviceInteractor = (deviceRepository: DeviceRepository)=> (deviceId: String):Promise<boolean> => {
     return deviceRepository.deleteDevice(deviceId)
 }
 export default deleteDeviceInteractor

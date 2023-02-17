@@ -3,11 +3,11 @@
  * @author ernesto
  */
 export default interface Device {
-    id:string;
-    nombre:string;
-    tipo:string;
-    uid:string;
-    imgAbierto:Blob;
-    imgCerrado:Blob;
-    imgEspera:Blob;
+    id:String;
+    nombre:String;
+    tipo:String;
+    uid:String;
+    imgAbierto:String;
+    imgCerrado:String;
+    imgEspera:String;
 }

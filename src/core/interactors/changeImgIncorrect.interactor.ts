@@ -4,7 +4,7 @@
  */
 import DeviceRepository from "../repositories/deviceRepository";
 
-const changeImgIncorrectInteractor = (deviceRepository: DeviceRepository)=> (deviceId: string, img:Blob):Promise<boolean> => {
+const changeImgIncorrectInteractor = (deviceRepository: DeviceRepository)=> (deviceId: String, img:String):Promise<boolean> => {
     return deviceRepository.changeImgIncorrect(deviceId, img)
 }
 export default changeImgIncorrectInteractor

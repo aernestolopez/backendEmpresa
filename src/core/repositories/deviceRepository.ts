@@ -5,11 +5,11 @@
 import Device from "../entities/device";
 
 export default interface DeviceRepository {
-    addDevice(id:string, nombre:string, tipo:string, uid:string, imgAbierto:Blob, imgCerrado:Blob, imgEspera:Blob):Promise<boolean>;
-    deleteDevice(id:string):Promise<boolean>;
-    updateDevice(id:string, uidNew:string):Promise<boolean>;
-    getDevice(id:string):Promise<Device>;
-    changeImgCorrect(id:string, img:Blob):Promise<boolean>;
-    changeImgIncorrect(id:string, img:Blob):Promise<boolean>;
-    changeImgWait(id:string, img:Blob):Promise<boolean>;
+    addDevice(id:String, nombre:String, tipo:String, uid:String, imgAbierto:String, imgCerrado:String, imgEspera:String):Promise<boolean>;
+    deleteDevice(id:String):Promise<boolean>;
+    updateDevice(id:String, uidNew:String):Promise<boolean>;
+    getDevice(id:String):Promise<Device>;
+    changeImgCorrect(id:String, img:String):Promise<boolean>;
+    changeImgIncorrect(id:String, img:String):Promise<boolean>;
+    changeImgWait(id:String, img:String):Promise<boolean>;
 }

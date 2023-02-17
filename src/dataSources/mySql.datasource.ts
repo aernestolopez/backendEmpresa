@@ -18,7 +18,7 @@ connection.connect();
 
 export default class DeviceSql implements DeviceRepository{
 
-    addDevice(id: string, nombre: string, tipo:string, uid:string, imgAbierto:Blob, imgCerrado:Blob, imgEspera:Blob): Promise<boolean> {
+    public addDevice(id: String, nombre: String, tipo:String, uid:String, imgAbierto:String, imgCerrado:String, imgEspera:String): Promise<boolean> {
         return new Promise<boolean>((resolve, reject)=>{
             connection.query('INSERT INTO device VALUES (?,?,?,?,?,?,?);',[id, nombre, tipo, uid, imgAbierto, imgCerrado, imgEspera], function (error){
                 if(error!=undefined){
@@ -30,7 +30,35 @@ export default class DeviceSql implements DeviceRepository{
         });
     }
 
-    changeImgCorrect(id: string, img: Blob): Promise<boolean> {
+   public async changeImgCorrect(id: String, img: String): Promise<boolean> {
+        return new Promise<boolean>((resolve, reject)=>{
+            connection.query("UPDATE device SET imgAbierto=" + img+" WHERE id='" +id+"';", function (error){
+                console.log(img);
+                if (error){
+                    reject(false)
+                    console.log(error)
+                }else{
+                    resolve(true)
+                }
+            })
+        })
+    }
+
+    public changeImgIncorrect(id: String, img: String): Promise<boolean> {
+        return new Promise<boolean>((resolve, reject)=>{
+            connection.query("UPDATE device SET imgCerrado=? WHERE id=?", [img, id], function (error){
+                console.log(img);
+                if (error){
+                    reject(false)
+                    console.log(error)
+                }else{
+                    resolve(true)
+                }
+            })
+        })
+    }
+
+   public changeImgWait(id: String, img: String): Promise<boolean> {
         return new Promise<boolean>((resolve, reject)=>{
             connection.query(`UPDATE device SET imgAbierto='${img}' WHERE id='${id}'`, function (error, results){
                 if (error){
@@ -43,33 +71,7 @@ export default class DeviceSql implements DeviceRepository{
         })
     }
 
-    changeImgIncorrect(id: string, img: Blob): Promise<boolean> {
-        return new Promise<boolean>((resolve, reject)=>{
-            connection.query(`UPDATE device SET imgAbierto='${img}' WHERE id='${id}'`, function (error, results){
-                if (error){
-                    reject(false)
-                    console.log(error)
-                }else{
-                    resolve(true)
-                }
-            })
-        })
-    }
-
-    changeImgWait(id: string, img: Blob): Promise<boolean> {
-        return new Promise<boolean>((resolve, reject)=>{
-            connection.query(`UPDATE device SET imgAbierto='${img}' WHERE id='${id}'`, function (error, results){
-                if (error){
-                    reject(false)
-                    console.log(error)
-                }else{
-                    resolve(true)
-                }
-            })
-        })
-    }
-
-    deleteDevice(id: string): Promise<boolean> {
+    public deleteDevice(id: String): Promise<boolean> {
         return new Promise<boolean>((resolve, reject)=>{
             connection.query(`DELETE FROM device WHERE id='${id}'`, function (error,results){
                 if (error){
@@ -82,7 +84,7 @@ export default class DeviceSql implements DeviceRepository{
         })
     }
 
-     getDevice(id: string): Promise<Device> {
+    public getDevice(id: String): Promise<Device> {
         return new Promise<Device>((resolve,reject)=>{
             connection.query(`SELECT * FROM device WHERE id='${id}'`, function (error, results) {
                 if (error){
@@ -102,7 +104,7 @@ export default class DeviceSql implements DeviceRepository{
         });
     }
 
-    updateDevice(id: string, uidNew:string): Promise<boolean> {
+    public updateDevice(id: String, uidNew:String): Promise<boolean> {
         return new Promise<boolean>((resolve, reject)=>{
             connection.query(`UPDATE device SET uid='${uidNew}' WHERE id='${id}'`, function(error,results){
                 if (error){

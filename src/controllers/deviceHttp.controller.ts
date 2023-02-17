@@ -10,8 +10,6 @@ export const addDeviceHttp=(request: Request, response: Response)=>{
 
 export const getDeviceHttp=(request:Request, response:Response)=>{
     const id=request.params['id'];
-    //const { body }=request;
-    //const { device }=body;
     const result=getDevice(id);
 
     result.then((resp)=>response.json(resp)).catch(()=>response.status(500).send());
@@ -34,7 +32,7 @@ export const updateDeviceHttp=(request:Request, response:Response)=>{
 export const changeImgCorrectHtttp=(request: Request, response:Response)=>{
     const { body }=request;
     const { device }=body;
-    const result=changeImgC(device.id, device.imgAbierto);
+    const result=changeImgC(device.id, device.data);
     result.then(()=>response.status(200).send()).catch(()=>response.status(500).send());
 }
 
