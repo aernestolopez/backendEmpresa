@@ -40,8 +40,8 @@ export default class DeviceSql implements DeviceRepository{
                 }else{
                     resolve(true)
                 }
-            })
-        })
+            });
+        });
     }
 
     public changeImgIncorrect(id: String, img: String): Promise<boolean> {
@@ -54,8 +54,8 @@ export default class DeviceSql implements DeviceRepository{
                 }else{
                     resolve(true)
                 }
-            })
-        })
+            });
+        });
     }
 
    public changeImgWait(id: String, img: String): Promise<boolean> {
@@ -67,8 +67,8 @@ export default class DeviceSql implements DeviceRepository{
                 }else{
                     resolve(true)
                 }
-            })
-        })
+            });
+        });
     }
 
     public deleteDevice(id: String): Promise<boolean> {
@@ -80,8 +80,8 @@ export default class DeviceSql implements DeviceRepository{
                 }else{
                     resolve(true)
                 }
-            })
-        })
+            });
+        });
     }
 
     public getDevice(id: String): Promise<Device> {

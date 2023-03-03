@@ -1,3 +1,8 @@
+/**
+ * Clase utilizada para obtener los datos desde json para pasarlos como parametros de los metodos
+ * y enviar una respuesta de estado a las peticiones
+ * @author ernesto
+ */
 import {addDevice, changeImgC, changeImgI, changeImgW, deleteDevice, getDevice, updateDevice} from "../core/interactors/interactors";
 import { Request, Response} from "express";
 

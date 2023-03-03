@@ -25,5 +25,9 @@
     "url": "https://github.com/aernestolopez/backendEmpresa/issues"
   },
   "homepage": "https://github.com/aernestolopez/backendEmpresa#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "https": "^1.0.0"
+  }
 }
