@@ -12,4 +12,5 @@ export default interface DeviceRepository {
     changeImgCorrect(id:String, img:String):Promise<boolean>;
     changeImgIncorrect(id:String, img:String):Promise<boolean>;
     changeImgWait(id:String, img:String):Promise<boolean>;
+    getDevices():Promise<Array<Device>>
 }

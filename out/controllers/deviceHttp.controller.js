@@ -1,6 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.changeImgWaitHttp = exports.changeImgIncorrectHttp = exports.changeImgCorrectHtttp = exports.updateDeviceHttp = exports.deleteDeviceHttp = exports.getDeviceHttp = exports.addDeviceHttp = void 0;
+exports.getDevicesHttp = exports.changeImgWaitHttp = exports.changeImgIncorrectHttp = exports.changeImgCorrectHtttp = exports.updateDeviceHttp = exports.deleteDeviceHttp = exports.getDeviceHttp = exports.addDeviceHttp = void 0;
+/**
+ * Clase utilizada para obtener los datos desde json para pasarlos como parametros de los metodos
+ * y enviar una respuesta de estado a las peticiones
+ * @author ernesto
+ */
 const interactors_1 = require("../core/interactors/interactors");
 const addDeviceHttp = (request, response) => {
     const { body } = request;
@@ -16,9 +21,8 @@ const getDeviceHttp = (request, response) => {
 };
 exports.getDeviceHttp = getDeviceHttp;
 const deleteDeviceHttp = (request, response) => {
-    const { body } = request;
-    const { device } = body;
-    const result = (0, interactors_1.deleteDevice)(device.id);
+    const id = request.params['id'];
+    const result = (0, interactors_1.deleteDevice)(id);
     result.then(() => response.status(200).send()).catch(() => response.status(500).send());
 };
 exports.deleteDeviceHttp = deleteDeviceHttp;
@@ -50,3 +54,8 @@ const changeImgWaitHttp = (request, response) => {
     result.then(() => response.status(200).send()).catch(() => response.status(500).send());
 };
 exports.changeImgWaitHttp = changeImgWaitHttp;
+const getDevicesHttp = (_request, response) => {
+    const result = (0, interactors_1.getDevices)();
+    result.then((resp) => response.json(resp)).catch(() => response.status(500).send());
+};
+exports.getDevicesHttp = getDevicesHttp;

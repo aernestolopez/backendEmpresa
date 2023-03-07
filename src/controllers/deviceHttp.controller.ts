@@ -3,7 +3,7 @@
  * y enviar una respuesta de estado a las peticiones
  * @author ernesto
  */
-import {addDevice, changeImgC, changeImgI, changeImgW, deleteDevice, getDevice, updateDevice} from "../core/interactors/interactors";
+import {addDevice, changeImgC, changeImgI, changeImgW, deleteDevice, getDevice, updateDevice, getDevices} from "../core/interactors/interactors";
 import { Request, Response} from "express";
 
 export const addDeviceHttp=(request: Request, response: Response)=>{
@@ -21,9 +21,8 @@ export const getDeviceHttp=(request:Request, response:Response)=>{
 }
 
 export const deleteDeviceHttp=(request: Request, response:Response)=>{
-    const { body }=request;
-    const { device }=body;
-    const result=deleteDevice(device.id);
+    const id=request.params['id'];
+    const result=deleteDevice(id);
     result.then(()=>response.status(200).send()).catch(()=>response.status(500).send())
 }
 
@@ -53,4 +52,9 @@ export const changeImgWaitHttp=(request:Request, response:Response)=>{
     const { device }=body;
     const result=changeImgW(device.id, device.data);
     result.then(()=>response.status(200).send()).catch(()=>response.status(500).send())
+}
+
+export const getDevicesHttp=(_request:Request, response:Response)=>{
+    const result=getDevices();
+    result.then((resp)=>response.json(resp)).catch(()=>response.status(500).send());
 }

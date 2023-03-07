@@ -18,6 +18,30 @@ let connection = mysql.createConnection({
 });
 connection.connect();
 class DeviceSql {
+    getDevices() {
+        return new Promise((resolve, reject) => {
+            connection.query(`SELECT * FROM device`, function (error, results) {
+                if (error) {
+                    reject(false);
+                    console.log(error);
+                }
+                let devices = [];
+                results.forEach((device) => {
+                    console.log(device);
+                    devices.push({
+                        id: device.id,
+                        nombre: device.nombre,
+                        tipo: device.tipo,
+                        uid: device.uid,
+                        imgAbierto: device.imgAbierto,
+                        imgCerrado: device.imgCerrado,
+                        imgEspera: device.imgEspera
+                    });
+                });
+                resolve(devices);
+            });
+        });
+    }
     addDevice(id, nombre, tipo, uid, imgAbierto, imgCerrado, imgEspera) {
         return new Promise((resolve, reject) => {
             connection.query('INSERT INTO device VALUES (?,?,?,?,?,?,?);', [id, nombre, tipo, uid, imgAbierto, imgCerrado, imgEspera], function (error) {

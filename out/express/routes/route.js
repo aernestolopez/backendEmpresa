@@ -13,9 +13,10 @@ const deviceHttp_controller_1 = require("../../controllers/deviceHttp.controller
 const route = express_1.default.Router();
 route.get('/getDevice/:id', deviceHttp_controller_1.getDeviceHttp);
 route.post('/addDevice', deviceHttp_controller_1.addDeviceHttp);
-route.delete('/delDevice', deviceHttp_controller_1.deleteDeviceHttp);
+route.delete('/delDevice/:id', deviceHttp_controller_1.deleteDeviceHttp);
 route.put('/updateDevice', deviceHttp_controller_1.updateDeviceHttp);
 route.put('/changeImgCon', deviceHttp_controller_1.changeImgCorrectHtttp);
 route.put('/changeImgDiscon', deviceHttp_controller_1.changeImgIncorrectHttp);
 route.put('/changeImgWait', deviceHttp_controller_1.changeImgWaitHttp);
+route.get('/getDevices', deviceHttp_controller_1.getDevicesHttp);
 exports.default = route;

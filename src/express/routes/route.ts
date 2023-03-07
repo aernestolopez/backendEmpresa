@@ -7,7 +7,7 @@ import {
     getDeviceHttp,
     addDeviceHttp,
     deleteDeviceHttp,
-    updateDeviceHttp, changeImgCorrectHtttp, changeImgIncorrectHttp, changeImgWaitHttp
+    updateDeviceHttp, changeImgCorrectHtttp, changeImgIncorrectHttp, changeImgWaitHttp, getDevicesHttp
 } from "../../controllers/deviceHttp.controller";
 
 //hay que añadir la res la req y la funcionalidad
@@ -15,10 +15,11 @@ const route=express.Router();
 
 route.get('/getDevice/:id', getDeviceHttp);
 route.post('/addDevice',addDeviceHttp);
-route.delete('/delDevice', deleteDeviceHttp);
+route.delete('/delDevice/:id', deleteDeviceHttp);
 route.put('/updateDevice', updateDeviceHttp);
 route.put('/changeImgCon', changeImgCorrectHtttp);
 route.put('/changeImgDiscon', changeImgIncorrectHttp);
 route.put('/changeImgWait', changeImgWaitHttp);
+route.get('/getDevices', getDevicesHttp);
 
 export default route;

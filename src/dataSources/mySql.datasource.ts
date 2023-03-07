@@ -17,6 +17,31 @@ let connection = mysql.createConnection({
 connection.connect();
 
 export default class DeviceSql implements DeviceRepository{
+    getDevices(): Promise<Device[]> {
+        return new Promise<Device[]>((resolve,reject)=>{
+            connection.query(`SELECT * FROM device`, function(error: any, results){
+                if(error){
+                    reject(false);
+                    console.log(error)
+                }
+                let devices:Device[]=[];
+                results.forEach((device:any)=>{
+                    console.log(device);
+                    devices.push({
+                        id: device.id,
+                        nombre: device.nombre,
+                        tipo: device.tipo,
+                        uid: device.uid,
+                        imgAbierto: device.imgAbierto,
+                        imgCerrado: device.imgCerrado,
+                        imgEspera: device.imgEspera
+                    });
+                });
+                resolve(devices);
+                
+            });
+        });
+    }
 
     public addDevice(id: String, nombre: String, tipo:String, uid:String, imgAbierto:String, imgCerrado:String, imgEspera:String): Promise<boolean> {
         return new Promise<boolean>((resolve, reject)=>{
