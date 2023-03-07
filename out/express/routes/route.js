@@ -9,7 +9,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
  */
 const express_1 = __importDefault(require("express"));
 const deviceHttp_controller_1 = require("../../controllers/deviceHttp.controller");
-//hay que añadir la res la req y la funcionalidad
 const route = express_1.default.Router();
 route.get('/getDevice/:id', deviceHttp_controller_1.getDeviceHttp);
 route.post('/addDevice', deviceHttp_controller_1.addDeviceHttp);
