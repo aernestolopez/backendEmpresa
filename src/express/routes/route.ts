@@ -10,7 +10,7 @@ import {
     updateDeviceHttp, changeImgCorrectHtttp, changeImgIncorrectHttp, changeImgWaitHttp, getDevicesHttp
 } from "../../controllers/deviceHttp.controller";
 
-//hay que añadir la res la req y la funcionalidad
+
 const route=express.Router();
 
 route.get('/getDevice/:id', getDeviceHttp);
