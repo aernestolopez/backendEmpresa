@@ -14,4 +14,5 @@ app.use(express_1.default.urlencoded({ extended: true, limit: '100000kb' }));
 app.use(express_1.default.json({ limit: '100000kb' }));
 app.use(route_1.default);
 const PORT = 1289;
+exports.default = app;
 app.listen(PORT, () => console.log(`Corriendo en ${PORT}`));
