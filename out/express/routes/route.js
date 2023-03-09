@@ -4,12 +4,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * Declaracion de las rutas para el servidor de la api rest con express
+ * Creacion de las rutas para el servidor de la api rest con express
  * @author  ernesto
  */
 const express_1 = __importDefault(require("express"));
 const deviceHttp_controller_1 = require("../../controllers/deviceHttp.controller");
 const route = express_1.default.Router();
+//Creamos las ruytas
 route.get('/getDevice/:id', deviceHttp_controller_1.getDeviceHttp);
 route.post('/addDevice', deviceHttp_controller_1.addDeviceHttp);
 route.delete('/delDevice/:id', deviceHttp_controller_1.deleteDeviceHttp);

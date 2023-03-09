@@ -1,5 +1,5 @@
 /**
- * Creacion de la api rest
+ * Creacion del servidor para la api rest
  * @author ernesto
  */
 import express from 'express';

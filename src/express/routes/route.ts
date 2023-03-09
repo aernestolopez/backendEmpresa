@@ -1,5 +1,5 @@
 /**
- * Declaracion de las rutas para el servidor de la api rest con express
+ * Creacion de las rutas para el servidor de la api rest con express
  * @author  ernesto
  */
 import express from 'express';
@@ -12,7 +12,7 @@ import {
 
 
 const route=express.Router();
-
+//Creamos las ruytas
 route.get('/getDevice/:id', getDeviceHttp);
 route.post('/addDevice',addDeviceHttp);
 route.delete('/delDevice/:id', deleteDeviceHttp);
