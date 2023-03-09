@@ -10,7 +10,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const deviceHttp_controller_1 = require("../../controllers/deviceHttp.controller");
 const route = express_1.default.Router();
-//Creamos las ruytas
+//Creamos las rutas
 route.get('/getDevice/:id', deviceHttp_controller_1.getDeviceHttp);
 route.post('/addDevice', deviceHttp_controller_1.addDeviceHttp);
 route.delete('/delDevice/:id', deviceHttp_controller_1.deleteDeviceHttp);

@@ -12,7 +12,7 @@ import {
 
 
 const route=express.Router();
-//Creamos las ruytas
+//Creamos las rutas
 route.get('/getDevice/:id', getDeviceHttp);
 route.post('/addDevice',addDeviceHttp);
 route.delete('/delDevice/:id', deleteDeviceHttp);

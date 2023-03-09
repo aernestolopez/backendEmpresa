@@ -18,6 +18,10 @@ let connection = mysql.createConnection({
 });
 connection.connect();
 class DeviceSql {
+    /**
+     * Metodo para obtener todos los dispositivos
+     * @returns devices
+     */
     getDevices() {
         return new Promise((resolve, reject) => {
             connection.query(`SELECT * FROM device`, function (error, results) {
@@ -42,6 +46,17 @@ class DeviceSql {
             });
         });
     }
+    /**
+     * Metodo para añadir un dispositivo
+     * @param id Id del dispositivo
+     * @param nombre nombre del dispositivo
+     * @param tipo tipo del dispositivo
+     * @param uid uid del dispositivo
+     * @param imgAbierto ImgAbierto del dispositivo
+     * @param imgCerrado ImgCerrado del dispositivo
+     * @param imgEspera ImgEspera del dispositivo
+     * @returns
+     */
     addDevice(id, nombre, tipo, uid, imgAbierto, imgCerrado, imgEspera) {
         return new Promise((resolve, reject) => {
             connection.query('INSERT INTO device VALUES (?,?,?,?,?,?,?);', [id, nombre, tipo, uid, imgAbierto, imgCerrado, imgEspera], function (error) {
@@ -54,6 +69,12 @@ class DeviceSql {
             });
         });
     }
+    /**
+     * Metodo para cambiar la imagen del dispositivo
+     * @param id Id del dispositivo
+     * @param img img a cambiar del dispositivo
+     * @returns
+     */
     changeImgCorrect(id, img) {
         return __awaiter(this, void 0, void 0, function* () {
             return new Promise((resolve, reject) => {
@@ -70,6 +91,12 @@ class DeviceSql {
             });
         });
     }
+    /**
+     * Metodo para cambiar la imagen del dispositivo
+     * @param id Id del dispositivo
+     * @param img img a cambiar del dispositivo
+     * @returns
+     */
     changeImgIncorrect(id, img) {
         return new Promise((resolve, reject) => {
             connection.query("UPDATE device SET imgCerrado=" + img + " WHERE id='" + id + "';", function (error) {
@@ -84,6 +111,12 @@ class DeviceSql {
             });
         });
     }
+    /**
+     * Metodo para cambiar la imagen del dispositivo
+     * @param id Id del dispositivo
+     * @param img img a cambiar del dispositivo
+     * @returns
+     */
     changeImgWait(id, img) {
         return new Promise((resolve, reject) => {
             connection.query("UPDATE device SET imgEnEspera=" + img + " WHERE id='" + id + "';", function (error) {
@@ -97,6 +130,11 @@ class DeviceSql {
             });
         });
     }
+    /**
+     * Metodo para eliminar un dispositivo
+     * @param id Id del dispositivo
+     * @returns
+     */
     deleteDevice(id) {
         return new Promise((resolve, reject) => {
             connection.query(`DELETE FROM device WHERE id='${id}'`, function (error, results) {
@@ -110,6 +148,11 @@ class DeviceSql {
             });
         });
     }
+    /**
+     * Metodo para obtener un dispositivo
+     * @param id Id del dispositivo
+     * @returns
+     */
     getDevice(id) {
         return new Promise((resolve, reject) => {
             connection.query(`SELECT * FROM device WHERE id='${id}'`, function (error, results) {
@@ -129,6 +172,12 @@ class DeviceSql {
             });
         });
     }
+    /**
+     * Metodo para cambiar la uid del dispositivo
+     * @param id Id del dispositivo
+     * @param uidNew Nueva uid
+     * @returns
+     */
     updateDevice(id, uidNew) {
         return new Promise((resolve, reject) => {
             connection.query(`UPDATE device SET uid='${uidNew}' WHERE id='${id}'`, function (error, results) {
