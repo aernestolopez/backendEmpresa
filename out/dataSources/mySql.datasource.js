@@ -31,7 +31,6 @@ class DeviceSql {
                 }
                 let devices = [];
                 results.forEach((device) => {
-                    console.log(device);
                     devices.push({
                         id: device.id,
                         nombre: device.nombre,
@@ -79,7 +78,6 @@ class DeviceSql {
         return __awaiter(this, void 0, void 0, function* () {
             return new Promise((resolve, reject) => {
                 connection.query("UPDATE device SET imgAbierto=" + img + " WHERE id='" + id + "';", function (error) {
-                    console.log(img);
                     if (error) {
                         reject(false);
                         console.log(error);
@@ -100,7 +98,6 @@ class DeviceSql {
     changeImgIncorrect(id, img) {
         return new Promise((resolve, reject) => {
             connection.query("UPDATE device SET imgCerrado=" + img + " WHERE id='" + id + "';", function (error) {
-                console.log(img);
                 if (error) {
                     reject(false);
                     console.log(error);

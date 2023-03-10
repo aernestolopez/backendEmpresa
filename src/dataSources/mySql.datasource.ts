@@ -30,7 +30,6 @@ export default class DeviceSql implements DeviceRepository{
                 }
                 let devices:Device[]=[];
                 results.forEach((device:any)=>{
-                    console.log(device);
                     devices.push({
                         id: device.id,
                         nombre: device.nombre,
@@ -79,7 +78,6 @@ export default class DeviceSql implements DeviceRepository{
    public async changeImgCorrect(id: String, img: String): Promise<boolean> {
         return new Promise<boolean>((resolve, reject)=>{
             connection.query("UPDATE device SET imgAbierto=" + img+" WHERE id='" +id+"';", function (error){
-                console.log(img);
                 if (error){
                     reject(false)
                     console.log(error)
@@ -99,7 +97,6 @@ export default class DeviceSql implements DeviceRepository{
     public changeImgIncorrect(id: String, img: String): Promise<boolean> {
         return new Promise<boolean>((resolve, reject)=>{
             connection.query("UPDATE device SET imgCerrado=" + img+" WHERE id='" +id+"';", function (error){
-                console.log(img);
                 if (error){
                     reject(false)
                     console.log(error)
